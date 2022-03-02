@@ -40,5 +40,11 @@ apt-get install -y mysql-server
 # PHP-MYSQL lib
 apt-get install -y php7.2-mysql
 
+#php mbstring
+apt-get install -y php7.2-mbstring
+
+#phpmyadmin
+apt-get install -y phpmyadmin
+
 # Restart Apache
 sudo service apache2 restart
