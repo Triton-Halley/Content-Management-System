@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <?php include "../../Includes/admin/header.php" ?>
 
     <div id="wrapper">

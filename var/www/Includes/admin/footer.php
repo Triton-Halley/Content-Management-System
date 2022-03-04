@@ -7,7 +7,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
+    <!-- own -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
