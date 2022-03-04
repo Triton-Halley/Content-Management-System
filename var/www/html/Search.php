@@ -1,8 +1,8 @@
 <?php include '../Includes/db.php' ?>
 <!-- Header -->
-<?php include '../Includes/header.php'?>
+<?php include '../Includes/main/header.php'?>
 <!-- Navigation -->
-<?php include '../Includes/Navigation.php'?>
+<?php include '../Includes/main/Navigation.php'?>
     <!-- Page Content -->
     <div class="container">
 
@@ -11,21 +11,22 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-                <?php 
+                <?php
 
                     if(isset($_POST['submit'])){
-                    
-                        $Search = $_POST['search'];
-                        //echo $Search ;
+
+                        $Search = htmlspecialchars($_POST['search']);
+
+                        echo $Search ;
                         $query = "SELECT * FROM posts WHERE post_tags LIKE '%$Search%'";
                         $search_query = mysqli_query($connection, $query);
-                    
+
                         if(!$search_query){
-                        
+
                             die("Query Failed" . mysqli_error($connection));
                         }
                         $count = mysqli_num_rows($search_query);
-                    
+
                         if($count == 0){
                             echo "<h1>No Result</h1>";
                         }
@@ -37,14 +38,14 @@
                                 $post_date = $row['post_date'];
                                 $post_image = $row['post_image'];
                                 $post_content = $row['post_content'];
-                        
+
                                 ?>
-                        
+
                                   <h1 class="page-header">
                                             Page Heading
                                             <small>Secondary Text</small>
                                         </h1>
-                        
+
                                         <!-- First Blog Post -->
                                         <h2>
                                             <a href="#"><?php echo $post_title ?></a>
@@ -58,48 +59,48 @@
                                         <hr>
                                         <p><?php echo $post_content ?></p>
                                         <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-                        
+
                                         <hr>
-                        
-                        
+
+
                            <?php }
-                        
-                        
+
+
                                     }
-                        
-                        
-                                    
+
+
+
                                     }
-                        
-                        
+
+
                         ?>
-                        
-                            
-                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                        
-                                      
-                            
-                        
+
+
+
+
+
+
+
+
+
+
+
+
                                     </div>
-                                    
-                                      
-                        
+
+
+
                                     <!-- Blog Sidebar Widgets Column -->
-                                    
-                                    
-                                    <?php include "../Includes/Sidebar.php";?>
-                                     
-                        
+
+
+                                    <?php include "../Includes/main/Sidebar.php";?>
+
+
                                 </div>
                                 <!-- /.row -->
-                        
+
                                 <hr>
-                        
-                           
-                        
-                        <?php include "../Includes/footer.php";?>
+
+
+
+                        <?php include "../Includes/main/footer.php";?>

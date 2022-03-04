@@ -1,8 +1,8 @@
 <?php include '../Includes/db.php' ?>
 <!-- Header -->
-<?php include '../Includes/header.php'?>
+<?php include '../Includes/main/header.php'?>
 <!-- Navigation -->
-<?php include '../Includes/Navigation.php'?>
+<?php include '../Includes/main/Navigation.php'?>
     <!-- Page Content -->
     <div class="container">
 
@@ -11,8 +11,8 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-            <?php 
-            
+            <?php
+
                 $query = "SELECT * FROM posts";
                 $select_all_posts_query = mysqli_query($connection,$query);
                 while($row = mysqli_fetch_assoc($select_all_posts_query)){
@@ -53,7 +53,7 @@
 
 
 
- 
+
 
                 <h1 class="page-header">
                     Page Heading
@@ -79,7 +79,7 @@
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
-            <?php include '../Includes/Sidebar.php';?> 
+            <?php include '../Includes/main/Sidebar.php';?>
 
         </div>
         <!-- /.row -->

@@ -1,0 +1,12 @@
+Log created: 2022-03-03T18:16:42.293168000Z
+Process ID:  5304 (0x14b8)
+Parent PID:  1319 (0x527)
+Executable:  /usr/lib/virtualbox/VBoxHeadless
+Arg[0]: /usr/lib/virtualbox/VBoxHeadless
+Arg[1]: --comment
+Arg[2]: CMS_default_1645883737506_77289
+Arg[3]: --startvm
+Arg[4]: 53b3f1a5-1b90-4711-b501-2a6f1f8b8c44
+Arg[5]: --vrde
+Arg[6]: config
+AddRef: illegal refcnt=3221225469 state=2
