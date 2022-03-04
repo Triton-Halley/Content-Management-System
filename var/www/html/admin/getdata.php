@@ -1,7 +1,7 @@
-<?php 
-
-if(isset($GET['getcatname'])){
-    $catname = $GET['getcatname'];
+<?php
+include_once '../../Includes/db.php';
+if(isset($_GET['getcatname'])){
+    $catname = $_GET['getcatname'];
     $q = "SELECT * FROM categories WHERE cat_title = '{$catname}';";
     $ali = mysqli_query($connection, $q);
     if(!$ali){
@@ -18,5 +18,12 @@ if(isset($GET['getcatname'])){
         //header('Content-type: application/json; charset=UTF-8');
         echo "test";
       }
-  } 
+}
 
+if(isset($_POST['setcatname'])){
+    $catname = $_POST['setcatname'];
+    $q = "INSERT INTO categories (cat_title)
+              VALUES ('{$catname}');";
+
+    mysqli_query($connection,$q);
+}

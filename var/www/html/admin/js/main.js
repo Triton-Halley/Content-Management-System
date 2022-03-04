@@ -8,7 +8,7 @@ const head = document.querySelector(".page-header");
 let m = "";
 
 const ajaxset = function () {
-  xhttp.open("post", "Categories.php?", true);
+  xhttp.open("post", "getdata.php?", true);
   xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   console.log(CatName.value);
   xhttp.send(`setcatname=${CatName.value}`);
@@ -30,6 +30,6 @@ const ajaxget = function () {
 };
 
 AddCatBtn.addEventListener("click", () => {
-  //ajaxset();
+  ajaxset();
   ajaxget();
 });

@@ -13,10 +13,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            <?php 
-                              echo "asdasd";
-                            ?>
-                            <small>Author</smal l>
+                            <small>Author</small>
                         </h1>
                           <div class="col-xs-6">
                             <form class="" action="" method="post">
@@ -72,14 +69,3 @@
         <!-- /#page-wrapper -->
 
         <?php include '../../Includes/admin/footer.php' ?>
-
-        <?php 
-        
-            if(isset($_POST['setcatname'])){
-              $catname = $_POST['setcatname'];
-              $q = "INSERT INTO categories (cat_title)
-              VALUES ('{$catname}');";
-
-              mysqli_query($connection,$q);
-            }        
-        ?>
