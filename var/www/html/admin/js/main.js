@@ -24,7 +24,7 @@ const ajaxget = function () {
       //console.log(JSON.parse(xhttp.response));
     }
   };
-  xhr.open("get", `Categories.php?getcatname=${CatName.value}`, true);
+  xhr.open("GET", `getdata.php?getcatname=PHP`, true);
   //xhttp.setRequestHeader("Content-Type", "application/json");
   xhr.send();
 };
