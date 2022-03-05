@@ -1,4 +1,5 @@
 <?php
+
 include_once '../../Includes/db.php';
 if(isset($_GET['getcatname'])){
     $catname = $_GET['getcatname'];
@@ -16,7 +17,7 @@ if(isset($_GET['getcatname'])){
 
         $row = mysqli_fetch_assoc($ali);
         //header('Content-type: application/json; charset=UTF-8');
-        echo "test";
+        echo json_encode($row);
       }
 }
 
@@ -25,5 +26,20 @@ if(isset($_POST['setcatname'])){
     $q = "INSERT INTO categories (cat_title)
               VALUES ('{$catname}');";
 
-    mysqli_query($connection,$q);
+    $result = mysqli_query($connection,$q);
+
+    if($result){
+      echo GetDataFromDB($catname,$connection);
+    }else{
+      echo "";
+    }
+}
+
+function GetDataFromDB($CatName,$conn){
+  $query = "SELECT * FROM categories WHERE cat_title = '{$CatName}';";
+  $query_result = mysqli_query($conn,$query);
+
+  if($query_result) return json_encode(mysqli_fetch_assoc($query_result));
+  else return "";
+
 }

@@ -1,7 +1,7 @@
 <?php
-$servername = "127.0.0.1:8111";
-$username = "root";
-$password = "";
+$servername = "localhost";
+$username = "padmin";
+$password = "admin";
 
 $connection = mysqli_connect($servername, $username, $password,'cms');
 
