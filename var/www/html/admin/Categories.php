@@ -32,6 +32,9 @@
                               <tr>
                                 <th>Id</th>
                                 <th>Category Title</th> 
+                                <th>Delete</th> 
+                                <th>Update</th> 
+                                <input type="text" name="" disabled style="border:0;">
                               </tr>
                             </thead>
                             <tbody id="tablebody">
@@ -49,8 +52,11 @@
                                     <tr>
                                       <?php
                                       echo "<td>{$cat_id}</td>";
-                                      echo "<td>{$cat_title}</td>";
+                                      echo "<td><input type='text' name='' value='{$cat_title}' style='border:0;' disabled1></td>";
+                                      echo "<td><button id='del-btn' class='btn btn-danger' value='{$cat_id}' >Delete</button></td>";
+                                      echo "<td><button id='update-btn' class='btn' value='{$cat_id}' >Update</button></td>";
                                       ?>
+                                      
                                     </tr>  
                                   <?php } ?>              
                                 

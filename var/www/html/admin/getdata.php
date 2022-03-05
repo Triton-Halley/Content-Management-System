@@ -43,3 +43,35 @@ function GetDataFromDB($CatName,$conn){
   else return "";
 
 }
+
+if(isset($_GET['deleteCat'])){
+  $catID = $_GET['deleteCat'];
+  $query = "DELETE FROM categories WHERE cat_id = '{$catID}' ;" ;
+
+  $query_result = mysqli_query($connection,$query);
+
+  if($query_result){
+    echo ResetAutoIncrement($connection);
+  }else{
+    echo "falid";
+  }
+}
+function ResetAutoIncrement($conn){
+  $query = "SELECT cat_id FROM categories ORDER BY cat_id DESC LIMIT 1 ;";
+  $query_result = mysqli_query($conn,$query);
+
+  if ($query_result) {
+    $row = mysqli_fetch_array($query_result);
+    $n = (int) $row['cat_id']+1;
+    $query = "ALTER TABLE categories AUTO_INCREMENT = {$n};";
+    $query_result = mysqli_query($conn,$query);
+    if($query_result) {
+      echo "Succes";
+    }else{
+      echo "failed {$conn->error}";
+    }
+  }else{
+    echo "failed {$conn->error}";
+  }
+
+}
