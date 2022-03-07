@@ -23,24 +23,26 @@ const ajaxset = function () {
           let cat_id = jsonobj.cat_id;
           let cat_title = jsonobj.cat_title;
           const tr = document.createElement("tr");
-          const td = document.createElement("td");
-          const td_1 = document.createElement("td");
-          const td_2 = document.createElement("td");
-          const txtnode = document.createTextNode(cat_id);
-          const txtnode_1 = document.createTextNode(cat_title);
-          const btn = document.createElement("button");
-          const textnodebtn = document.createTextNode("Delete");
-          td.appendChild(txtnode);
-          td_1.appendChild(txtnode_1);
-          td_2.appendChild(btn);
-          console.log(td_2);
-          btn.appendChild(textnodebtn);
-          btn.value = cat_id;
-          btn.classList.add("btn", "btn-danger");
-          btn.id = "del-btn";
+          const td = createEl("td", document.createTextNode(cat_id));
+          const td_1 = createEl("td", document.createTextNode(cat_title));
+          const td_2 = createEl(
+            "td",
+            document.createElement("button"),
+            "btn",
+            "Delete",
+            cat_id
+          );
+          const td_3 = createEl(
+            "td",
+            document.createElement("button"),
+            "btn",
+            "Update",
+            cat_id
+          );
           tr.appendChild(td);
           tr.appendChild(td_1);
           tr.appendChild(td_2);
+          tr.appendChild(td_3);
           TableBody.appendChild(tr);
           addEvent();
         }
@@ -67,25 +69,27 @@ const ajaxget = function () {
       let cat_id = jsonobj.cat_id;
       let cat_title = jsonobj.cat_title;
       const tr = document.createElement("tr");
-      const td = document.createElement("td");
-      const td_1 = document.createElement("td");
-      const td_2 = document.createElement("td");
-      const txtnode = document.createTextNode(cat_id);
-      const txtnode_1 = document.createTextNode(cat_title);
-      const btn = document.createElement("button");
-      const textnodebtn = document.createTextNode("Delete");
-      td.appendChild(txtnode);
-      td_1.appendChild(txtnode_1);
-      td_2.appendChild(btn);
-      console.log(td_2);
-      btn.appendChild(textnodebtn);
-      btn.value = cat_id;
-      btn.classList.add("btn btn-danger");
-      btn.id = "del-btn";
+      const td = createEl("td", document.createTextNode(cat_id));
+      const td_1 = createEl("td", document.createTextNode(cat_title));
+      const td_2 = createEl(
+        "td",
+        document.createElement("button"),
+        "btn",
+        "Delete",
+        cat_id
+      );
+      const td_3 = createEl(
+        "td",
+        document.createElement("button"),
+        "btn",
+        "Update",
+        cat_id
+      );
 
       tr.appendChild(td);
       tr.appendChild(td_1);
       tr.appendChild(td_2);
+      tr.appendChild(td_3);
       TableBody.appendChild(tr);
 
       //console.log(JSON.parse(xhttp.response));
@@ -130,3 +134,34 @@ const addEvent = function () {
   }
 };
 addEvent();
+
+const createEl = function (
+  ElementType,
+  InsideELement,
+  type = null,
+  btnType = null,
+  cat_id = null
+) {
+  const element = document.createElement(ElementType);
+  element.appendChild(InsideELement);
+  if (type === "btn") {
+    if (btnType === "Delete") {
+      const textnodebtn = document.createTextNode(btnType);
+      InsideELement.appendChild(textnodebtn);
+      InsideELement.value = cat_id;
+      InsideELement.classList.add("btn", "btn-danger");
+      InsideELement.id = "del-btn";
+    } else {
+      const textnodebtn = document.createTextNode(btnType);
+      InsideELement.appendChild(textnodebtn);
+      InsideELement.value = cat_id;
+      InsideELement.classList.add("btn");
+      InsideELement.id = "update-btn";
+    }
+  }
+  return element;
+};
+
+document.addEventListener("resize", (e) => {
+  alert(e);
+});
