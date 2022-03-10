@@ -5,9 +5,9 @@
         <!-- Navigation -->
         <?php include "../../Includes/admin/Navigation.php" ?>
 
-        <div id="page-wrapper">
+        <div id="page-wrapper" >
 
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-color:rgba(0,0,0,0.005);">
 
                 <!-- Page Heading -->
                 <div class="row">

@@ -1,4 +1,4 @@
-<div class="editPopup">
+<div class="editPopup adddisplay">
 <div class="popup">
     <div class="close-btn-font"><span><i class="fa-solid fa-xmark fa-xl	"></i></span></div>
     <div class="popupel">

@@ -17,7 +17,8 @@ Vagrant.configure("2") do |config|
     config.vm.network "private_network", ip: "192.168.33.10"
   
     # Folder Settings
-    config.vm.synced_folder "./var/www/html", "/var/www/html"#,created:true, :nfs => { :mount_options => ["dmode=777", "fmode=666"] }
+    config.vm.synced_folder "./var/www/html", "/var/www/html", :nfs => { :mount_options => ["dmode=777", "fmode=666"] } 
+    #,created:true,
   
     config.vm.synced_folder "./var/www","/var/www"
   

@@ -1,5 +1,5 @@
 .editPopup {
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -7,6 +7,10 @@
   position: absolute;
   left: 30%;
   right: 30%;
+  z-index: 9999;
+}
+.adddisplay {
+  display: none;
 }
 .popup {
   background-color: #0e0c1d9f;
@@ -64,4 +68,8 @@
     right: 5%;
     left: 5%;
   }
+}
+.overlay{
+  z-index:2;
+  background-color: rgba(0, 0, 0, 0.5);
 }

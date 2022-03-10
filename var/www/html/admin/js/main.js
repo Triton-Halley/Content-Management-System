@@ -6,7 +6,10 @@ const xhttp = new XMLHttpRequest();
 const TableBody = document.getElementById("tablebody");
 //const head = document.querySelector(".page-header");
 const DeleteBtn = document.querySelectorAll("#del-btn");
-
+const UpdateBtn = document.querySelectorAll("#update-btn");
+const EditPopup = document.querySelector(".editPopup");
+const PageWrapper = document.querySelector("#page-wrapper");
+const closePopUp = document.querySelector(".close-btn-font");
 let m = "";
 
 const ajaxset = function () {
@@ -132,6 +135,14 @@ const addEvent = function () {
       });
     })(i);
   }
+  for (const j of UpdateBtn) {
+    (function (j) {
+      j.addEventListener("click", function () {
+        EditPopup.classList.toggle("adddisplay");
+        PageWrapper.classList.toggle(".overlay");
+      });
+    })(j);
+  }
 };
 addEvent();
 
@@ -164,4 +175,8 @@ const createEl = function (
 
 document.addEventListener("resize", (e) => {
   alert(e);
+});
+
+closePopUp.addEventListener("click", () => {
+  EditPopup.classList.add("adddisplay");
 });
