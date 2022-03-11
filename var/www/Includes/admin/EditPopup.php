@@ -1,14 +1,14 @@
 <div class="editPopup adddisplay">
-<div class="popup">
-    <div class="close-btn-font"><span><i class="fa-solid fa-xmark fa-xl	"></i></span></div>
-    <div class="popupel">
-    <input id="categoryName" type="text" placeholder="Enter new CategoryName">
-    </div>
-    <div class="popupbtn">
+    <div class="popup">
+        <div class="close-btn-font"><span><i class="fa-solid fa-xmark fa-xl	"></i></span></div>
+        <div class="popupel">
+            <input id="categoryName" type="text" placeholder="Enter new CategoryName">
+        </div>
+        <div class="popupbtn">
 
-        <button id="catEdit" class="update-btn">Update </button>
+            <button id="catEdit" class="update-btn">Update </button>
+        </div>
     </div>
-</div>
 </div>
 
 <!-- <script>

@@ -11,7 +11,7 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-      <li><a href="../index.php">Site</a></li>
+        <li><a href="../index.php">Site</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Triton Halley <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -35,10 +35,10 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#posts_dropdown "><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="posts_dropdown" class="collapse">
                     <li>
-                        <a href="#">View all posts</a>
+                        <a href="?source=view-post">View all posts</a>
                     </li>
                     <li>
-                        <a href="#">Add posts</a>
+                        <a href="?source=add-post">Add posts</a>
                     </li>
                 </ul>
             </li>
@@ -64,7 +64,7 @@
                 </ul>
             </li>
             <li>
-              <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
+                <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profile</a>
             </li>
         </ul>
     </div>

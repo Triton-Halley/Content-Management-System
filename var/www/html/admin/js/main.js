@@ -4,13 +4,17 @@ const AddCatBtn = document.getElementById("add-cat");
 const CatName = document.getElementById("cat-name");
 const xhttp = new XMLHttpRequest();
 const TableBody = document.getElementById("tablebody");
-//const head = document.querySelector(".page-header");
 const DeleteBtn = document.querySelectorAll("#del-btn");
 const UpdateBtn = document.querySelectorAll("#update-btn");
 const EditPopup = document.querySelector(".editPopup");
-const PageWrapper = document.querySelector("#page-wrapper");
-const closePopUp = document.querySelector(".close-btn-font");
-let m = "";
+const PageWrapper = document.querySelector("#overlay");
+const closePopUp = document.querySelector(".close-btn-font"); 
+const CategoryEditBtn = document.getElementById("catEdit");
+const UpdateInput = document.getElementById('categoryName');
+
+//CatID
+let CategoryID = 0;
+let currentCategory = "";
 
 const ajaxset = function () {
   if (CatName) {
@@ -27,10 +31,12 @@ const ajaxset = function () {
           let cat_title = jsonobj.cat_title;
           const tr = document.createElement("tr");
           const td = createEl("td", document.createTextNode(cat_id));
-          const td_1 = createEl("td", document.createTextNode(cat_title));
+          
+          const td_1 = createEl("td", document.createTextNode(cat_title),'CatTitle');
           const td_2 = createEl(
             "td",
             document.createElement("button"),
+            null,
             "btn",
             "Delete",
             cat_id
@@ -38,6 +44,7 @@ const ajaxset = function () {
           const td_3 = createEl(
             "td",
             document.createElement("button"),
+            null,
             "btn",
             "Update",
             cat_id
@@ -111,14 +118,41 @@ const ajaxDeleteData = function (btn) {
       if (xhr.responseText === "Succes") {
         btn.parentElement.parentElement.remove();
       } else {
-        alert("Failed to Delete");
+        alert(xhr.responseText);
       }
     }
   };
   xhr.open("GET", `getdata.php?deleteCat=${btn.value}`, true);
   xhr.send();
 };
+const ajaxUpdate = function(){
+const xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function(){
+  if(xhr.readyState == 4 && xhr.status == 200){
+    if(xhr.responseText == "true"){
+      const tr = CategoryID.parentElement.parentElement ;
+      const catTitleSelector = document.getElementById('cat-title');
+      for(const item of tr.childNodes){
 
+        if(item.innerText === catTitleSelector.innerText){
+          item.innerText = UpdateInput.value ;
+        }
+      }
+      closeEditeMode();
+      UpdateInput.value ='';
+
+    }
+  }
+
+};
+xhr.open("post","getdata.php?",true);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.send(`Catname=${UpdateInput.value}&CatId=${CategoryID.value}`)
+
+
+
+
+}
 AddCatBtn.addEventListener("click", () => {
   ajaxset();
   CatName.value = "";
@@ -135,11 +169,13 @@ const addEvent = function () {
       });
     })(i);
   }
+  const UpdateBtn = document.querySelectorAll("#update-btn");
   for (const j of UpdateBtn) {
     (function (j) {
       j.addEventListener("click", function () {
         EditPopup.classList.toggle("adddisplay");
-        PageWrapper.classList.toggle(".overlay");
+        PageWrapper.classList.toggle("overlay");
+        CategoryID = j;
       });
     })(j);
   }
@@ -149,12 +185,18 @@ addEvent();
 const createEl = function (
   ElementType,
   InsideELement,
+  //is cat id or cat title
+  catType=null,
   type = null,
   btnType = null,
   cat_id = null
 ) {
   const element = document.createElement(ElementType);
   element.appendChild(InsideELement);
+  if(catType !== null && catType === "CatTitle"){
+    element.id = 'cat-title';
+  }
+
   if (type === "btn") {
     if (btnType === "Delete") {
       const textnodebtn = document.createTextNode(btnType);
@@ -178,5 +220,14 @@ document.addEventListener("resize", (e) => {
 });
 
 closePopUp.addEventListener("click", () => {
-  EditPopup.classList.add("adddisplay");
+  closeEditeMode();
 });
+
+CategoryEditBtn.addEventListener('click',()=>{
+  ajaxUpdate();
+});
+
+const closeEditeMode = function(){
+  EditPopup.classList.add("adddisplay");
+  PageWrapper.classList.toggle("overlay");
+}

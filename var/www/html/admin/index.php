@@ -1,30 +1,52 @@
 <?php include "../../Includes/admin/header.php" ?>
+<?php include "../../Includes/admin/EditPopup.php"; ?>
+<div id="wrapper">
 
-    <div id="wrapper">
+    <!-- Navigation -->
+    <?php include "../../Includes/admin/Navigation.php" ?>
+    <div id="overlay"></div>
+    <div id="page-wrapper">
 
-        <!-- Navigation -->
-        <?php include "../../Includes/admin/Navigation.php" ?>
+        <div class="container-fluid">
 
-        <div id="page-wrapper">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Welcome to Admin
+                        <small>Author</small>
+                    </h1>
 
-            <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Welcome to Admin
-                            <small>Author</small>
-                        </h1>
+                    <?php
 
-                    </div>
+                    $source = '';
+                    if (isset($_GET['source'])) {
+                        $source = $_GET['source'];
+                    }
+
+                    switch ($source) {
+
+                        case 'view-post';
+                            include "../../Includes/admin/view_all_posts.php";
+                            break;
+
+                        case 'add-post';
+                            include "../../Includes/admin/addPost.php";
+                            break;
+                    }
+
+
+                    ?>
+
                 </div>
-                <!-- /.row -->
-
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.row -->
 
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.container-fluid -->
 
-        <?php include '../../Includes/admin/footer.php' ?>
+    </div>
+    <!-- /#page-wrapper -->
+
+    <?php include '../../Includes/admin/footer.php' ?>

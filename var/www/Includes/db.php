@@ -1,12 +1,12 @@
 <?php
-$servername = "localhost";
-$username = "padmin";
-$password = "admin";
+$servername = "localhost:8111";
+$username = "root";
+$password = "";
 
 $connection = mysqli_connect($servername, $username, $password,'cms');
 
 if(!$connection){
-    die("Failed :  {$connection->error}");
+    die("Failed :  {$connection->error}"); 
     //echo "<script>alert('connection succesfully')</script>";
 }
 else{
