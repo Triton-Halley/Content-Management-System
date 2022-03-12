@@ -1,5 +1,6 @@
-<?php include "../../Includes/admin/header.php" ?>
-<?php include "../../Includes/functions.php" ?>
+<?php include "../../Includes/admin/header.php"; ?>
+<?php include "../../Includes/functions.php"; ?>
+<?php include "../../Includes/db.php"; ?>
 <?php
 
 if (isset($_POST['create_post'])) {
@@ -15,11 +16,22 @@ if (isset($_POST['create_post'])) {
     $post_date = date('d-m-y');
     $post_comment_count = 4;
 
+    if (str_contains($post_content, "'")) {
+        $post_content = str_replace("'", "\'", $post_content);
+    }
 
 
     $bool = move_uploaded_file($post_image_temp, "../Uploads/{$post_image}");
     //writelog($bool ? 'true' : 'false');
-    echo $bool;
+    $query = "INSERT INTO posts(post_category_id,post_title,
+    	post_author,post_date,post_image,post_content,post_tag,
+        post_comment_count,post_status)
+     VALUE ('{$post_category}','{$post_title}','{$post_author}','now()',
+     '{$post_image}','{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}');";
+    echo $query;
+    $query_result = SendQuery($query, $connection);
+
+    confrim($query_result);
 }
 ?>
 <form action="" method="POST" enctype="multipart/form-data">

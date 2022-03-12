@@ -1,7 +1,6 @@
 <?php
 
 
-
 function writelog($txt)
 {
     $filename_log = "log.txt";
@@ -16,4 +15,19 @@ function writelog($txt)
         fwrite($handel, $txt);
     }
     fclose($handel);
+}
+
+function SendQuery($query, $conn)
+{
+
+    return mysqli_query($conn, $query);
+}
+
+function confrim($result)
+{
+    global $connection;
+
+    if (!$result) {
+        die('Query failed : ' . mysqli_errno($connection));
+    }
 }
